@@ -1,0 +1,3 @@
+## Vecka 5 Tisdag
+
+Idag har jag fixat själva strukturen/skelettet för databas projektet genom att göra en mapp och initiera den men jag har även gjort en planering för hur databasen ska se ut med tabellerna. Därefter började jag kopiera in delar av textäventyret för att få det att passa in med nya projektet game reviews. Ännu har jag inte stött på några problem och nästa gång ska jag börja fixa databas och routes mest troligt.
