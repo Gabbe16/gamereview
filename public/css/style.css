@@ -1,8 +1,13 @@
 body {
-    font-family: sans-serif;
-  }
-  
-  .wrapper {
-    max-width: 62rem;
-    margin-inline: auto;
-  }
+  font-family: sans-serif;
+}
+
+.wrapper {
+  max-width: 62rem;
+  margin-inline: auto;
+
+}
+
+img {
+  max-width: 100%;
+}
