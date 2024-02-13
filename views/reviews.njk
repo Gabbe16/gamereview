@@ -1,0 +1,15 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+<main class="wrapper">
+  <h1> {{ title }}</h1>
+
+  
+    {% for review in reviews %}
+      <h2> The score for this game is {{ review.score }} / 10</h2>
+
+      <p>{{ review.text }} </p>
+    {% endfor %}
+
+</main>
+{% endblock %}

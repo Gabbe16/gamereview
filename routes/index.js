@@ -5,23 +5,22 @@ router.get('/', function (req, res) {
   res.render('index.njk', { title: 'Game reviews' })
 })
 
-router.get('/search', function (req, res) {
-  console.log(req.query.q)
-  // then use searchQuery in SQL
-  // should filter to check so its only letters and numbers
-  /*
-  SELECT * FROM jens_movie_director
-  JOIN jens_movie ON jens_movie_director.movie_id = jens_movie.id
-  JOIN jens_director ON jens_movie_director.director_id = jens_director.id
-  WHERE jens_movie.title LIKE "%QUERY%";
-*/
+const pool = require('../db')
 
-  // SELECT * FROM gabriel_game JOIN gabriel_gamereview ON gabriel_gamereview.game_id = gabriel_game.game_id
-
-  let query = req.query.q
-  query = query.replace(/[^a-zA-Z0-9]/g, '')
-
-  res.render('search.njk', { title: 'Search', query: query })
+router.get('/dbtest/:id', async (req, res) => {
+  try {
+    const id = req.params.id
+    const [reviews] = await pool .promise().query(`SELECT * FROM gabriel_reviews JOIN gabriel_games ON gabriel_reviews.game_id = gabriel_games.id WHERE game_id = ${id}`)
+    console.log(reviews)
+    res.render('reviews.njk', {
+      title: reviews[0].title,
+      reviews: reviews,
+      author: "Gabriel"
+    })
+  } catch (error) {
+    console.log(error)
+    res.sendStatus(500)
+  }
 })
 
 module.exports = router
