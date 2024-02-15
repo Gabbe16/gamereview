@@ -1,0 +1,33 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+<main class="wrapper">
+  <h1>Som spel recenserare vill jag att min recension också ska få vara med</h1>
+  <p>Formuläret visas på sidan /newreview, men när formuläret skickas så används metoden POST för att skicka det till /reviews</p>
+  <form action="/reviews" method="post">
+    <div class="form-element">
+      <label for="name">Namn:</label>
+      <input type="text" name="name" id="name">
+    </div>
+    <div class="form-element">
+      <label for="age">Ålder:</label>
+      <input type="number" name="age" id="age">
+    </div>
+    <div class="form-element">
+      <label for="weight">Vikt:</label>
+      <input type="number" name="weight" id="weight">
+    </div>
+    <div class="form-element">
+      <label for="breed">Ras:</label>
+      <select name="breed" id="breed">
+        {% for breed in breeds %}
+          <option value="{{ breed.id }}">{{ breed.name }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="form-element">
+      <input type="submit" value="Lägg till katt">
+    </div>
+  </form>
+</main>
+{% endblock %}

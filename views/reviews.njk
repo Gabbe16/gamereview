@@ -2,14 +2,14 @@
 
 {% block content %}
 <main class="wrapper">
-  <h1> {{ title }}</h1>
-
-  
+  <h1>{{ title }}</h1>
+  <p>Jag kan nu byta namn på min route till /reviews för att visa en lista på alla recensioner.</p>
+  <p>Nästa steg blir sedan att göra sidor för varje enskild recension.</p>
+  <p>Jag vill <a href="/reviews/new">registrera min review.</a></p>
+  <ul class="reviewlist">
     {% for review in reviews %}
-      <h2> The score for this game is {{ review.score }} / 10</h2>
-
-      <p>{{ review.text }} </p>
+      <li><a href="/reviews/{{review.id}}">{{ review.name }}</a><a href="/reviews/{{ review.id }}/delete">Ta bort review</a></li>
     {% endfor %}
-
+  </ul>
 </main>
 {% endblock %}
