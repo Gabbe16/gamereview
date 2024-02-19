@@ -2,12 +2,11 @@
 
 {% block content %}
 <main class="wrapper">
-  <p>Det här är en sida för att visa all data om en enskild katt. Den data jag får nu är inte längre en array utan ett objekt.</p>
+  <p>Det här är en sida för att visa all data om en enskild recension. Den data jag får nu är inte längre en array utan ett objekt.</p>
   <div class="card">
-    <h1>Namn: {{ cat.name }}</h1>
-    <h2>Ras: {{ cat.breed }}</h2>
-    <p>Ålder: {{ cat.age }}</p>
-    <p>Vikt: {{ cat.weight }}</p>
+    <h1> Namn: {{ review.title }}</h1>
+    <p> Text: {{ review.text }}</p> 
+    <h2> Score: {{ review.score }}</h2>
   </div>
 </main>
 {% endblock %}

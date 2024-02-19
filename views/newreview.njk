@@ -2,31 +2,27 @@
 
 {% block content %}
 <main class="wrapper">
-  <h1>Som spel recenserare vill jag att min recension också ska få vara med</h1>
-  <p>Formuläret visas på sidan /newreview, men när formuläret skickas så används metoden POST för att skicka det till /reviews</p>
+  <h1>Som kattägare vill jag att min katt också ska få vara med</h1>
+  <p>Formuläret visas på sidan /newcat, men när formuläret skickas så används metoden POST för att skicka det till /cats</p>
   <form action="/reviews" method="post">
     <div class="form-element">
-      <label for="name">Namn:</label>
-      <input type="text" name="name" id="name">
+      <label for="review">Recension:</label>
+      <input type="text" name="review" id="review">
     </div>
     <div class="form-element">
-      <label for="age">Ålder:</label>
-      <input type="number" name="age" id="age">
+      <label for="score">Score (Från 1-10):</label>
+      <input type="number" name="score" id="score">
     </div>
     <div class="form-element">
-      <label for="weight">Vikt:</label>
-      <input type="number" name="weight" id="weight">
-    </div>
-    <div class="form-element">
-      <label for="breed">Ras:</label>
-      <select name="breed" id="breed">
-        {% for breed in breeds %}
-          <option value="{{ breed.id }}">{{ breed.name }}</option>
+      <label for="game">Spel:</label>
+      <select name="game" id="game">
+        {% for game in games %}
+          <option value="{{ game.id }}">{{ game.name }}</option>
         {% endfor %}
       </select>
     </div>
     <div class="form-element">
-      <input type="submit" value="Lägg till katt">
+      <input type="submit" value="Lägg till din recension">
     </div>
   </form>
 </main>
