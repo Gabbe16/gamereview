@@ -87,4 +87,23 @@ router.post('/reviews', async function (req, res) {
   }
 })
 
+
+router.get('/reviewform', function(req, res) {
+  res.render('reviewform.njk', { title: 'Ny recension' })
+})
+
+router.post('/reviewform', function(req, res) {
+  // console.log(req.body)
+
+  // plocka ut de värden som vi ska ha
+  // använd name id från input fält
+  const title = req.body.title
+  const reviewtext = req.body.reviewtext
+  console.log(title, reviewtext)
+
+  // INSERT INTO `gabriel_reviews` (`title`, `text`, `score`) VALUES ('Galactiv Adventure', 'galactic', 7);
+
+  res.json(req.body)
+})
+
 module.exports = router

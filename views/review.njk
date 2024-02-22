@@ -3,10 +3,11 @@
 {% block content %}
 <main class="wrapper">
   <p>Det här är en sida för att visa all data om en enskild recension. Den data jag får nu är inte längre en array utan ett objekt.</p>
+  <a href="/reviews">Tillbaka till alla recensioner</a>
   <div class="card">
-    <h1> Namn: {{ review.title }}</h1>
-    <p> Text: {{ review.text }}</p> 
+    <h1> {{ review.title }}</h1>
     <h2> Score: {{ review.score }}</h2>
+    <p> {{ review.text }}</p> 
   </div>
 </main>
 {% endblock %}
