@@ -1,3 +1,14 @@
-## Vecka 5 Tisdag
+## Vad har jag gjort?
 
-Idag har jag fixat själva strukturen/skelettet för databas projektet genom att göra en mapp och initiera den men jag har även gjort en planering för hur databasen ska se ut med tabellerna. Därefter började jag kopiera in delar av textäventyret för att få det att passa in med nya projektet game reviews. Ännu har jag inte stött på några problem och nästa gång ska jag börja fixa databas och routes mest troligt.
+# Read
+
+Jag har skapat en databas med tabeller och sedan fyllt det med data. För att hämta datan gjorde jag en SQL fråga och testade den i TablePlus. Sedan för att använda detta i mitt projekt skapades följande:
+
+* En server.js fil
+* En .env fil
+* En .gitignore (.env och node_modules)
+* En databas.js (db.js) som kopierades ifrån ett annat projekt
+
+När detta var gjort testade jag att allt fungerade som det skulle och därefter kunde jag böra göra olika routes för att börja hämta datan till webbsidan. Det är alltid bra med att börja testa om man får datan med json och ifall det fungerar så kan man fortsätta vidare. Nu laddar jag in själva databas.js (db.js) i routes för att sedan kunna göra queries för att hämta ut all data. Eftersom detta är ett promise måste man använda sig utav async/await och själva datan sparas som en variabel (const [data]). När detta var gjort skickar man tillbaka det till webbsidan med antingen res.json för att se informationen eller res.render för att få en webbsida med text som syns. Det går däremot inte att använda sig av båda. Sista delen blir att kolla att detta fungerar och sedan skapa en view i views mappen. Här med hjälp av njk kan vi visa datan för användaren med hjälp utav res.render.
+
+# Create
