@@ -3,12 +3,13 @@
 {% block content %}
 <main class="wrapper">
   <h1>{{ title }}</h1>
-  <p>Jag kan nu byta namn på min route till /reviews för att visa en lista på alla recensioner.</p>
-  <p>Nästa steg blir sedan att göra sidor för varje enskild recension.</p>
-  <p>Jag vill <a href="/reviews/new">registrera min review.</a></p>
+  <p>Här finns alla recensioner som är gjorda och finns på min databas.</p>
+  <p>Klicka in på den recension som du vill läsa.</p>
+  <p>Jag vill <a href="/reviews/new">registrera min recension.</a></p>
   <ul class="reviewlist">
     {% for review in reviews %}
-      <li><a href="/reviews/{{review.id}}">{{ review.name }}</a><a href="/reviews/{{ review.id }}/delete">Ta bort review</a></li>
+    <li><a href="/reviews/{{review.id}}">{{ review.title }}</a><a href="/reviews/{{ review.id }}/delete">Ta bort
+        review</a></li>
     {% endfor %}
   </ul>
 </main>

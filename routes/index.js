@@ -10,7 +10,7 @@ const pool = require('../db')
 router.get('/reviews', async (req, res) => {
   try {
     const id = req.params.id
-    const [reviews] = await pool .promise().query(`SELECT * FROM gabriel_reviews JOIN gabriel_games ON gabriel_reviews.game_id = gabriel_games.id`)
+    const [reviews] = await pool.promise().query(`SELECT gabriel_reviews.*, gabriel_games.name AS game FROM gabriel_reviews JOIN gabriel_games ON gabriel_reviews.game_id = gabriel_games.id;`)
     console.log(reviews)
     res.render('reviews.njk', {
       title: 'Alla spelrecensioner',
@@ -49,8 +49,6 @@ router.get('/reviews/:id/delete', async function (req, res) {
   }
 })
 
-// De två routes nedanför behöver fortfarande ändras
-
 router.get('/reviews/:id', async function (req, res) {
   try {
     const [reviewWithGame] = await pool.promise().query(
@@ -76,34 +74,15 @@ router.post('/reviews', async function (req, res) {
   // res.json(req.body) för att kolla och kika den data vi får från front-end
   try {
     const [result] = await pool.promise().query(
-      `INSERT INTO gabriel_reviews (text, score, game_id)
-      VALUES (?, ?, ?)`,
-      [req.body.text, req.body.score, req.body.game]
+      `INSERT INTO gabriel_reviews (title, text, score, game_id)
+      VALUES (?, ?, ?, ?)`,
+      [req.body.title, req.body.text, req.body.score, req.body.game]
     )
     res.redirect('/reviews')
   } catch (error) {
     console.log(error)
     res.sendStatus(500)
   }
-})
-
-
-router.get('/reviewform', function(req, res) {
-  res.render('reviewform.njk', { title: 'Ny recension' })
-})
-
-router.post('/reviewform', function(req, res) {
-  // console.log(req.body)
-
-  // plocka ut de värden som vi ska ha
-  // använd name id från input fält
-  const title = req.body.title
-  const reviewtext = req.body.reviewtext
-  console.log(title, reviewtext)
-
-  // INSERT INTO `gabriel_reviews` (`title`, `text`, `score`) VALUES ('Galactiv Adventure', 'galactic', 7);
-
-  res.json(req.body)
 })
 
 module.exports = router
