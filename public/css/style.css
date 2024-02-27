@@ -32,9 +32,17 @@ body {
   padding: 0.4rem;
 }
 
-
 form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+}
+
+a {
+  text-decoration: none;
+  color: blue;
+}
+
+a:hover {
+  color: rgb(71, 71, 169);
 }

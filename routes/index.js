@@ -15,7 +15,6 @@ router.get('/reviews', async (req, res) => {
     res.render('reviews.njk', {
       title: 'Alla spelrecensioner',
       reviews: reviews,
-      author: "Gabriel"
     })
   } catch (error) {
     console.log(error)
